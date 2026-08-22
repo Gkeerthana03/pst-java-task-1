@@ -1,0 +1,45 @@
+
+**Code**
+
+**svg**
+
+**Test Result**
+
+**svg**
+
+**Testcase**
+
+[**26. Remove Duplicates from Sorted Array**](https://leetcode.com/problems/remove-duplicates-from-sorted-array/)
+
+Easy
+
+svg
+
+Topics
+
+[premium lock icon](https://leetcode.com/_next/static/images/lock-a6627e2c7fa0ce8bc117c109fb4e567d.svg)Companies
+
+svg
+
+Hint give the java code correctly
+class Solution {
+
+    public int removeDuplicates(int[] nums) {
+
+        if (nums.length == 0) {
+            return 0;
+        }
+
+        int k = 1;
+
+        for (int i = 1; i < nums.length; i++) {
+
+            if (nums[i] != nums[i - 1]) {
+                nums[k] = nums[i];
+                k++;
+            }
+        }
+
+        return k;
+    }
+}
