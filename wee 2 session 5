@@ -1,0 +1,41 @@
+
+**Code**
+
+**svg**
+
+**Test Result**
+
+**svg**
+
+**Testcase**
+
+[**1732. Find the Highest Altitude**](https://leetcode.com/problems/find-the-highest-altitude/)
+
+Easy
+
+svg
+
+Topics
+
+[premium lock icon](https://leetcode.com/_next/static/images/lock-a6627e2c7fa0ce8bc117c109fb4e567d.svg)Companies
+
+svg
+
+Hint guve the correct java code
+class Solution {
+
+    public int largestAltitude(int[] gain) {
+
+        int altitude = 0;
+        int highest = 0;
+
+        for (int i = 0; i < gain.length; i++) {
+
+            altitude = altitude + gain[i];
+
+            highest = Math.max(highest, altitude);
+        }
+
+        return highest;
+    }
+}
