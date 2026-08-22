@@ -1,0 +1,37 @@
+
+**Code**
+
+**svg**
+
+**Test Result**
+
+**svg**
+
+**Testcase**
+
+[**1360. Number of Days Between Two Dates**](https://leetcode.com/problems/number-of-days-between-two-dates/)
+
+Easy
+
+svg
+
+Topics
+
+[premium lock icon](https://leetcode.com/_next/static/images/lock-a6627e2c7fa0ce8bc117c109fb4e567d.svg)Companies
+
+svg
+
+Hint give the java code correlty
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+
+class Solution {
+
+    public int daysBetweenDates(String date1, String date2) {
+
+        LocalDate d1 = LocalDate.parse(date1);
+        LocalDate d2 = LocalDate.parse(date2);
+
+        return (int) Math.abs(ChronoUnit.DAYS.between(d1, d2));
+    }
+}
