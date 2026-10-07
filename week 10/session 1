@@ -1,0 +1,100 @@
+Question 1: Advanced Problem-Solving Approach using linear and non-linear collections.
+An online shopping system must maintain products, quickly search products by ID, and process orders according to priority.
+give the java code corretly
+
+import java.util.*;
+
+class Product {
+    int productId;
+    String productName;
+    double price;
+
+    Product(int productId, String productName, double price) {
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return productId + " " + productName + " " + String.format("%.2f", price);
+    }
+}
+
+class Order implements Comparable<Order> {
+    int orderId;
+    int productId;
+    int priority;
+
+    Order(int orderId, int productId, int priority) {
+        this.orderId = orderId;
+        this.productId = productId;
+        this.priority = priority;
+    }
+
+    // Higher priority value is processed first
+    @Override
+    public int compareTo(Order other) {
+        return Integer.compare(other.priority, this.priority);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Linear collection: maintains the list of products
+        ArrayList<Product> productList = new ArrayList<>();
+
+        // Non-linear collection: fast product search by ID
+        HashMap<Integer, Product> productMap = new HashMap<>();
+
+        // Non-linear collection: processes orders according to priority
+        PriorityQueue<Order> orderQueue = new PriorityQueue<>();
+
+        int n = sc.nextInt();
+
+        // Read products
+        for (int i = 0; i < n; i++) {
+            int id = sc.nextInt();
+            String name = sc.next();
+            double price = sc.nextDouble();
+
+            Product product = new Product(id, name, price);
+
+            productList.add(product);
+            productMap.put(id, product);
+        }
+
+        int q = sc.nextInt();
+
+        // Read orders
+        for (int i = 0; i < q; i++) {
+            int orderId = sc.nextInt();
+            int productId = sc.nextInt();
+            int priority = sc.nextInt();
+
+            orderQueue.add(new Order(orderId, productId, priority));
+        }
+
+        // Process orders according to priority
+        while (!orderQueue.isEmpty()) {
+            Order order = orderQueue.poll();
+
+            // Quickly search product using HashMap
+            Product product = productMap.get(order.productId);
+
+            if (product != null) {
+                System.out.println(
+                    "Order " + order.orderId +
+                    " Product " + product.productName +
+                    " Priority " + order.priority
+                );
+            }
+        }
+
+        sc.close();
+    }
+}
+
+
