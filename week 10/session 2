@@ -1,0 +1,59 @@
+Question: 2 - Student Marks Management System
+
+A teacher wants to create a Java program to store the marks of students in a class. The number of students is not known in advance, so the program should use a dynamic array.
+The teacher can add marks one by one, and the array should automatically increase its size when it becomes full.
+ give the jav ode corretly
+
+ import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Initial array size
+        int capacity = 2;
+        int[] marks = new int[capacity];
+
+        int size = 0;
+
+        System.out.println("Enter marks one by one.");
+        System.out.println("Enter -1 to stop.");
+
+        while (true) {
+            int mark = sc.nextInt();
+
+            // Stop taking input
+            if (mark == -1) {
+                break;
+            }
+
+            // If array is full, double its size
+            if (size == capacity) {
+                capacity = capacity * 2;
+
+                int[] newMarks = new int[capacity];
+
+                // Copy old elements into new array
+                for (int i = 0; i < size; i++) {
+                    newMarks[i] = marks[i];
+                }
+
+                marks = newMarks;
+            }
+
+            // Add new mark
+            marks[size] = mark;
+            size++;
+        }
+
+        // Display all marks
+        System.out.println("Student Marks:");
+
+        for (int i = 0; i < size; i++) {
+            System.out.println("Student " + (i + 1) + ": " + marks[i]);
+        }
+
+        sc.close();
+    }
+}
