@@ -1,0 +1,43 @@
+Question 10 - Phone Contact Directory
+Scenario
+A mobile application stores people's names and phone numbers. Users can search for a contact or update an existing phone number.
+
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        HashMap<String, String> contacts = new HashMap<>();
+
+        int n = sc.nextInt();
+        sc.nextLine();
+
+        for (int i = 0; i < n; i++) {
+            String name = sc.nextLine();
+            String phone = sc.nextLine();
+            contacts.put(name, phone);
+        }
+
+        String searchName = sc.nextLine();
+
+        if (contacts.containsKey(searchName)) {
+            System.out.println(contacts.get(searchName));
+        } else {
+            System.out.println("Contact not found");
+        }
+
+        String updateName = sc.nextLine();
+
+        if (contacts.containsKey(updateName)) {
+            String newPhone = sc.nextLine();
+            contacts.put(updateName, newPhone);
+            System.out.println(contacts.get(updateName));
+        } else {
+            System.out.println("Contact not found");
+        }
+
+        sc.close();
+    }
+}
