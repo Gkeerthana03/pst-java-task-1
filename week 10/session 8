@@ -1,0 +1,41 @@
+Question: 8 Find Common Subjects Between Two Students
+
+Scenario: 
+
+Two students have selected different subjects. Write a Java program using retainAll() to find the subjects common to both.
+ give the jav code
+
+
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n1 = sc.nextInt();
+        sc.nextLine();
+
+        Set<String> student1 = new LinkedHashSet<>();
+
+        for (int i = 0; i < n1; i++) {
+            student1.add(sc.nextLine());
+        }
+
+        int n2 = sc.nextInt();
+        sc.nextLine();
+
+        Set<String> student2 = new LinkedHashSet<>();
+
+        for (int i = 0; i < n2; i++) {
+            student2.add(sc.nextLine());
+        }
+
+        student1.retainAll(student2);
+
+        for (String subject : student1) {
+            System.out.println(subject);
+        }
+
+        sc.close();
+    }
+}
